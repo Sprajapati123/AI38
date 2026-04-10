@@ -13,28 +13,38 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        leading: Icon(Icons.arrow_back_ios),
         actions: [
-          Icon(Icons.search,color: Colors.white,),
-          Icon(Icons.notifications,color: Colors.white,),
+          Icon(Icons.more_horiz),
         ],
-        leading: Icon(Icons.menu,color: Colors.white,),
-        backgroundColor: Colors.red,
-        title: Text("Dashboard",style: TextStyle(
-          color: Colors.white
-        ),),
+        title: Text("sandis"),
       ),
       body: Column(
         children: [
-          Text("Stories",
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 18,
-                color: Colors.red,
-                fontStyle: FontStyle.italic,
-                decoration: TextDecoration.underline
-              )),
-          Icon(Icons.add),
-          Row(children: [Text("Stories"), Icon(Icons.add)]),
+
+          Row(
+            children: [
+              Column(
+                children: [
+                  Text("174"),
+                  Text("Posts")
+                ],
+              ),
+              Column(
+                children: [
+                  Text("1M"),
+                  Text("Followers")
+                ],
+              ),
+              Column(
+                children: [
+                  Text("174k"),
+                  Text("Following")
+                ],
+              )
+            ],
+          )
         ],
       ),
     );
