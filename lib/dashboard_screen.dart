@@ -20,6 +20,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       body: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Image.asset("assets/images/user.png",
                   height: 100,
