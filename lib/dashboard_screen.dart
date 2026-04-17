@@ -18,19 +18,30 @@ class _DashboardScreenState extends State<DashboardScreen> {
         title: Text("sandis"),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Image.asset("assets/images/user.png",
-                  height: 100,
-                  width: 100),
+              Image.asset("assets/images/user.png", height: 100, width: 100),
 
               Column(children: [Text("174"), Text("Posts")]),
 
               Column(children: [Text("1M"), Text("Followers")]),
 
               Column(children: [Text("174k"), Text("Following")]),
+            ],
+          ),
+
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text("Sandis Prajapati"),
+              Text("Flutter Developer"),
+              Text("stw0066@softwarica.edu.np"),
+              Text("Followed by ram and shyam"),
             ],
           ),
         ],

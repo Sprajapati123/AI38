@@ -14,6 +14,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "AI38",
+      debugShowCheckedModeBanner: false,
       home: DashboardScreen(),
     );
   }
