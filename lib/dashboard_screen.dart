@@ -33,17 +33,57 @@ class _DashboardScreenState extends State<DashboardScreen> {
               Column(children: [Text("174k"), Text("Following")]),
             ],
           ),
-
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text("Sandis Prajapati"),
-              Text("Flutter Developer"),
-              Text("stw0066@softwarica.edu.np"),
-              Text("Followed by ram and shyam"),
-            ],
+          Padding(
+            // padding: const EdgeInsets.only(top: ,left: ,right: ,bottom: ),
+            // padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                InkWell(onTap: () {}, child: Text("Sandis Prajapati")),
+                GestureDetector(
+                    onTap: (){},
+                    child: Text("Flutter Developer", style: TextStyle(color: Colors.grey))),
+                Text("stw0066@softwarica.edu.np"),
+                Text("Followed by ram and shyam"),
+              ],
+            ),
           ),
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: double.infinity,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  foregroundColor: Colors.white,
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                onPressed: () {
+                  print("i am clicked");
+                },
+                child: Text("Elevated"),
+              ),
+            ),
+          ),
+          TextButton(onPressed: () {}, child: Text("Text")),
+          OutlinedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.transparent,
+                foregroundColor: Colors.black,
+                elevation: 5,
+                side: BorderSide(width: 2,color: Colors.black),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              onPressed: () {}, child: Text("Outlined")),
+          IconButton(onPressed: () {}, icon: Icon(Icons.add)),
         ],
       ),
     );
