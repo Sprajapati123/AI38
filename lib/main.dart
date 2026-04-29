@@ -1,4 +1,5 @@
 import 'package:ai38ai/home_screen.dart';
+import 'package:ai38ai/login_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'dashboard_screen.dart';
@@ -16,7 +17,7 @@ class MyHomePage extends StatelessWidget {
     return MaterialApp(
       title: "AI38",
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: LoginScreen(),
     );
   }
 }
