@@ -11,7 +11,10 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,31 +39,53 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
 
-          Row(
-            children: [
-              Expanded(
-                child: SizedBox(
-                  height: 70,
-                  child: Card(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          "assets/images/faceebook.png",
-                          height: 30,
-                          width: 30,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 8.0),
-                          child: Text("Facebook"),
-                        ),
-                      ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Row(
+              children: [
+                Expanded(
+                  child: SizedBox(
+                    height: 70,
+                    child: Card(
+                      color: Colors.purple.shade50,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            "assets/images/faceebook.png",
+                            height: 30,
+                            width: 30,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 15.0),
+                            child: Text("Facebook"),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Expanded(child: SizedBox(height: 70, child: Card())),
-            ],
+
+                SizedBox(width: 15,),
+
+                Expanded(child: SizedBox(height: 70, child: Card(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/google.png",
+                        height: 30,
+                        width: 30,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15.0),
+                        child: Text("Google"),
+                      ),
+                    ],
+                  ),
+                ))),
+              ],
+            ),
           ),
         ],
       ),
