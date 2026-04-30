@@ -1,3 +1,4 @@
+import 'package:ai38ai/components/login_card.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -12,13 +13,13 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-      ),
+      appBar: AppBar(backgroundColor: Colors.white),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+
+
           Center(
             child: Text(
               "Sign In",
@@ -44,49 +45,48 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Row(
               children: [
                 Expanded(
-                  child: SizedBox(
-                    height: 70,
-                    child: Card(
-                      color: Colors.purple.shade50,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            "assets/images/faceebook.png",
-                            height: 30,
-                            width: 30,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15.0),
-                            child: Text("Facebook"),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  child: LoginCard(
+                      "assets/images/faceebook.png",
+                      "Facebook"),
                 ),
 
-                SizedBox(width: 15,),
+                SizedBox(width: 15),
 
-                Expanded(child: SizedBox(height: 70, child: Card(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        "assets/images/google.png",
-                        height: 30,
-                        width: 30,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 15.0),
-                        child: Text("Google"),
-                      ),
-                    ],
-                  ),
-                ))),
+                Expanded(
+                  child: LoginCard(
+                      "assets/images/google.png",
+                      "Google"),
+                ),
               ],
             ),
           ),
+
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Divider(
+                    color: Colors.grey.shade300,
+                    thickness: 2,
+                    height: 3,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Text("OR"),
+                ),
+                Expanded(
+                  child: Divider(
+                    color: Colors.grey.shade300,
+                    thickness: 2,
+                    height: 3,
+                  ),
+                )
+
+              ],
+            ),
+          )
         ],
       ),
     );
