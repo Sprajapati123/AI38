@@ -1,4 +1,5 @@
 import 'package:ai38ai/components/login_card.dart';
+import 'package:ai38ai/register_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -134,7 +135,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     });
                   },
                   icon: Icon(
-                    visibility == true ? Icons.visibility : Icons.visibility_off,
+                    visibility == true ? Icons.visibility : Icons
+                        .visibility_off,
                   ),
                 ),
                 hint: Text("********"),
@@ -153,10 +155,11 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
               width: double.infinity,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text("Forget Password?",style: TextStyle(color: Colors.grey),)
-                ]),
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      "Forget Password?", style: TextStyle(color: Colors.grey),)
+                  ]),
             ),
             SizedBox(height: 15),
             SizedBox(
@@ -176,7 +179,14 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 Text("Don't have account?"),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+
+                    Navigator.pushReplacement(
+                        context, MaterialPageRoute(
+                      builder: (context) => RegisterScreen(),));
+
+
+                  },
                   child: Text("Sign up", style: TextStyle(color: Colors.blue)),
                 ),
               ],

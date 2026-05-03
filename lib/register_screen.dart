@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -14,6 +15,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController passwordController = TextEditingController();
 
   bool visibility = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,6 +126,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               filled: true,
               fillColor: Colors.grey.shade100,
+            ),
+          ),
+
+          SizedBox(height: 15),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                foregroundColor: Colors.white,
+              ),
+              onPressed: () async{
+                // Obtain shared preferences.
+                final SharedPreferences prefs =
+                    await SharedPreferences.getInstance();
+
+                await prefs.setString("name", nameController.text);
+                await prefs.setString("address", addressController.text);
+                await prefs.setString("email", emailController.text);
+                await prefs.setString("password", passwordController.text);
+              },
+              child: Text("Register"),
             ),
           ),
         ],
