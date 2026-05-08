@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:ai38ai/components/login_card.dart';
+import 'package:ai38ai/dashboard_screen.dart';
 import 'package:ai38ai/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -179,18 +180,23 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 onPressed: () async {
                   final SharedPreferences prefs =
-                      await SharedPreferences.getInstance();
+                  await SharedPreferences.getInstance();
 
                   final String? email = prefs.getString('email');
                   final String? password = prefs.getString('password');
 
-                  if(email == emailController.text && password == passwordController.text){
+                  if (email == emailController.text &&
+                      password == passwordController.text) {
                     Fluttertoast.showToast(
-                        msg: "Login successfully",
+                      msg: "Login successfully",
                     );
-                  }else{
+                    await prefs.setBool("isLoggedIn", true);
+
+                    Navigator.pushReplacement(context, MaterialPageRoute(
+                      builder: (context) => DashboardScreen(),));
+                  } else {
                     Fluttertoast.showToast(
-                        msg: "Invalid login",
+                      msg: "Invalid login",
                     );
                   }
 
