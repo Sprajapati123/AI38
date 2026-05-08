@@ -137,8 +137,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 backgroundColor: Colors.blue,
                 foregroundColor: Colors.white,
               ),
-              onPressed: () async{
-                // Obtain shared preferences.
+              onPressed: () async {
                 final SharedPreferences prefs =
                     await SharedPreferences.getInstance();
 
