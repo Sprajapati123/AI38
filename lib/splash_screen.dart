@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     final bool? isLoggedIn = prefs.getBool('isLoggedIn');
 
-    if(bool == true){
+    if(isLoggedIn == true){
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DashboardScreen(),));
     }else{
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
