@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:ai38ai/components/login_card.dart';
 import 'package:ai38ai/register_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,8 +18,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController passwordController = TextEditingController();
 
   bool visibility = false;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -139,8 +139,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     });
                   },
                   icon: Icon(
-                    visibility == true ? Icons.visibility : Icons
-                        .visibility_off,
+                    visibility == true
+                        ? Icons.visibility
+                        : Icons.visibility_off,
                   ),
                 ),
                 hint: Text("********"),
@@ -159,11 +160,14 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
               width: double.infinity,
               child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "Forget Password?", style: TextStyle(color: Colors.grey),)
-                  ]),
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    "Forget Password?",
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 15),
             SizedBox(
@@ -173,23 +177,40 @@ class _LoginScreenState extends State<LoginScreen> {
                   backgroundColor: Colors.blue,
                   foregroundColor: Colors.white,
                 ),
-                onPressed: () {},
+                onPressed: () async {
+                  final SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+
+                  final String? email = prefs.getString('email');
+                  final String? password = prefs.getString('password');
+
+                  if(email == emailController.text && password == passwordController.text){
+                    Fluttertoast.showToast(
+                        msg: "Login successfully",
+                    );
+                  }else{
+                    Fluttertoast.showToast(
+                        msg: "Invalid login",
+                    );
+                  }
+
+                  // String -> required
+                  // String? -> nullable
+                },
                 child: Text("Login"),
               ),
             ),
 
-            SizedBox(height: 10,),
+            SizedBox(height: 10),
             Row(
               children: [
                 Text("Don't have account?"),
                 GestureDetector(
                   onTap: () {
-
                     Navigator.pushReplacement(
-                        context, MaterialPageRoute(
-                      builder: (context) => RegisterScreen(),));
-
-
+                      context,
+                      MaterialPageRoute(builder: (context) => RegisterScreen()),
+                    );
                   },
                   child: Text("Sign up", style: TextStyle(color: Colors.blue)),
                 ),
