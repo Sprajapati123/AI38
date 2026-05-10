@@ -3,6 +3,7 @@ import 'dart:ffi';
 
 import 'package:ai38ai/dashboard_screen.dart';
 import 'package:ai38ai/login_screen.dart';
+import 'package:ai38ai/navigation_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -31,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
     final bool? isLoggedIn = prefs.getBool('isLoggedIn');
 
     if(isLoggedIn == true){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DashboardScreen(),));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NavigationScreen(),));
     }else{
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
     }

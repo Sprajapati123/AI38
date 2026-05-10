@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:ai38ai/components/login_card.dart';
 import 'package:ai38ai/dashboard_screen.dart';
+import 'package:ai38ai/navigation_screen.dart';
 import 'package:ai38ai/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -193,7 +194,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     await prefs.setBool("isLoggedIn", true);
 
                     Navigator.pushReplacement(context, MaterialPageRoute(
-                      builder: (context) => DashboardScreen(),));
+                      builder: (context) => NavigationScreen(),));
                   } else {
                     Fluttertoast.showToast(
                       msg: "Invalid login",
