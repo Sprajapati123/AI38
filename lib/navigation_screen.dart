@@ -15,7 +15,9 @@ class NavigationScreen extends StatefulWidget {
 
 class _NavigationScreenState extends State<NavigationScreen> {
   int currentIndex = 0;
-  final PageController pageController = PageController();
+  final PageController pageController = PageController(
+    // viewportFraction: 0.8
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +27,11 @@ class _NavigationScreenState extends State<NavigationScreen> {
         selectedItemColor: Colors.amber,
         showSelectedLabels: false,
         showUnselectedLabels: false,
+        type: BottomNavigationBarType.fixed,
         unselectedItemColor: Colors.black54,
         onTap: (int index){
           setState(() {
+            pageController.jumpToPage(index);
             currentIndex = index;
           });
         },
