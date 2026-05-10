@@ -54,8 +54,13 @@ class _NavigationScreenState extends State<NavigationScreen> {
         ],
       ),
       body: PageView(
-        physics: NeverScrollableScrollPhysics(),
+        // physics: NeverScrollableScrollPhysics(),
         controller: pageController,
+        onPageChanged: (int index){
+          setState(() {
+            currentIndex = index;
+          });
+        },
         children: [
           HomeScreen(),
           SearchScreen(),
