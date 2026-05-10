@@ -21,8 +21,32 @@ class _NavigationScreenState extends State<NavigationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex,
+        selectedItemColor: Colors.amber,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        unselectedItemColor: Colors.black54,
+        onTap: (int index){
+          setState(() {
+            currentIndex = index;
+          });
+        },
         items: [
-
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: "Home"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: "Search"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.add_shopping_cart),
+              label: "Cart"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.history),
+              label: "Orders"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: "Profile"),
         ],
       ),
       body: PageView(
@@ -33,7 +57,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
           SearchScreen(),
           CartScreen(),
           OrderScreen(),
-          ProfileScreen()
+          ProfileScreen(),
         ],
       ),
     );
