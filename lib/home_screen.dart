@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
     list.add(UserModel(image: "assets/images/cat.png", name: "Cat"));
     list.add(UserModel(image: "assets/images/dog.png", name: "Dog"));
     list.add(
-        UserModel(image: "assets/images/bettafish.png", name: "Betta Fish"));
+        UserModel(image: "assets/images/bettafish.jpg", name: "Betta Fish"));
     list.add(
         UserModel(image: "assets/images/chinchilla.jpeg", name: "Chinchilla"));
     list.add(UserModel(image: "assets/images/guppy.jpg", name: "Guppy"));
@@ -47,11 +47,44 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemBuilder: (context, index) {
                     return Column(
                       children: [
-                        Image.asset(list[index].image),
+                       // CircleAvatar(
+                       //  radius: 20
+                       //   backgroundImage: AssetImage(list[index].image),
+                       // ),
+                        Image.asset(list[index].image,height: 60,width: 60,),
                         Text(list[index].name),
                       ],
                     );
                   }
+              ),
+            ),
+
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: list.length,
+              itemBuilder: (context,index) => Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 5,
+                        child: Row(
+                          children: [
+                            CircleAvatar(
+                              radius: 10,
+                              backgroundImage: AssetImage(list[index].image),
+                            ),
+                            Text(list[index].name),
+                          ],
+                        ),
+                      ),
+
+                      Expanded(
+                          flex: 1,
+                          child: Icon(Icons.more_horiz))
+                    ],
+                  )
+                ],
               ),
             ),
 
