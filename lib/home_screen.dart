@@ -6,66 +6,69 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green,
       appBar: AppBar(),
       body: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Image.asset("assets/images/user.png",
-              height: 50,
-                width: 50,
-              )
-            ],
-          ),
+          SizedBox(
+            height: 200,
+            child: ElevatedButton(onPressed: () {
 
-          Row(
-            children: [
-              Expanded(
-                flex: 2,
-                child: Container(
-                  height: 100,
-                  child: Card(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("hello")
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Container(
-                  height: 100,
-                  child: Card(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("hello")
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 2,
-                child: Container(
-                  height: 100,
-                  child: Card(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("hello")
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          )
+            }, child: Text("Submit")),
+          ),
+          SizedBox(
+            height: 200,
+            child: ElevatedButton(onPressed: () {
+
+            }, child: Text("Submit")),
+          ),
+          SizedBox(
+            height: 200,
+            child: ElevatedButton(onPressed: () {
+
+            }, child: Text("Submit")),
+          ),
+          SizedBox(
+            height: 200,
+            child: ElevatedButton(onPressed: () {
+
+            }, child: Text("Submit")),
+          ),
+          SizedBox(
+            height: 200,
+            child: ElevatedButton(onPressed: () {
+
+            }, child: Text("Submit")),
+          ),
+          SizedBox(
+            height: 200,
+            child: ElevatedButton(onPressed: () {
+
+            }, child: Text("Submit")),
+          ),
+          SizedBox(
+            height: 200,
+            child: ElevatedButton(onPressed: () {
+
+            }, child: Text("Submit")),
+          ),
+          SizedBox(
+            height: 200,
+            child: ElevatedButton(onPressed: () {
+
+            }, child: Text("Submit")),
+          ),
+          SizedBox(
+            height: 200,
+            child: ElevatedButton(onPressed: () {
+
+            }, child: Text("Submit")),
+          ),
+          SizedBox(
+            height: 200,
+            child: ElevatedButton(onPressed: () {
+
+            }, child: Text("Submit")),
+          ),
         ],
       ),
     );
