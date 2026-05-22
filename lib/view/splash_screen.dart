@@ -1,11 +1,13 @@
 import 'dart:async';
 import 'dart:ffi';
 
-import 'package:ai38ai/dashboard_screen.dart';
-import 'package:ai38ai/login_screen.dart';
-import 'package:ai38ai/navigation_screen.dart';
+import 'package:ai38ai/view/dashboard_screen.dart';
+
+import 'package:ai38ai/view/navigation_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

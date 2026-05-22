@@ -1,12 +1,18 @@
-import 'package:ai38ai/home_screen.dart';
-import 'package:ai38ai/login_screen.dart';
-import 'package:ai38ai/splash_screen.dart';
+import 'package:ai38ai/view/home_screen.dart';
+import 'package:ai38ai/view/splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import 'dashboard_screen.dart';
+import 'view/dashboard_screen.dart';
+import 'firebase_options.dart';
 
 
-void main(){
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+   await Firebase.initializeApp(
+     options: DefaultFirebaseOptions.currentPlatform,
+   );
+
   runApp(MyHomePage());
 }
 

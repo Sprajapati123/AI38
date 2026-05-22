@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "131423194841",
-    "project_id": "test-cd131",
-    "storage_bucket": "test-cd131.firebasestorage.app"
+    "project_number": "478037530844",
+    "project_id": "ai-984bd",
+    "storage_bucket": "ai-984bd.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:131423194841:android:3e167d81b8f860233eb8c8",
+        "mobilesdk_app_id": "1:478037530844:android:f82791bc4961a2411cbc19",
         "android_client_info": {
           "package_name": "com.example.ai38ai"
         }
@@ -15,7 +15,26 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCjYX2U1_VzzaG1PSqkqBiXm0hQFVQNmMI"
+          "current_key": "AIzaSyASl0W4n8_3OudjiuvI4fGwoDOLTSLrtgM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478037530844:android:5b26d659b2661cc61cbc19",
+        "android_client_info": {
+          "package_name": "com.example.petshop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASl0W4n8_3OudjiuvI4fGwoDOLTSLrtgM"
         }
       ],
       "services": {

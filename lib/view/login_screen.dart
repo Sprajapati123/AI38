@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:ai38ai/components/login_card.dart';
-import 'package:ai38ai/dashboard_screen.dart';
-import 'package:ai38ai/navigation_screen.dart';
-import 'package:ai38ai/register_screen.dart';
+import 'package:ai38ai/view/dashboard_screen.dart';
+import 'package:ai38ai/view/navigation_screen.dart';
+import 'package:ai38ai/view/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';

@@ -1,6 +1,6 @@
-import 'package:ai38ai/home_screen.dart';
-import 'package:ai38ai/profile_screen.dart';
-import 'package:ai38ai/search_screen.dart';
+import 'package:ai38ai/view/home_screen.dart';
+import 'package:ai38ai/view/profile_screen.dart';
+import 'package:ai38ai/view/search_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'cart_screen.dart';
@@ -62,7 +62,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
           });
         },
         children: [
-          HomeScreen(),
+          SearchScreen(),
           SearchScreen(),
           CartScreen(),
           OrderScreen(),
