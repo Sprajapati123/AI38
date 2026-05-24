@@ -3,53 +3,74 @@ import 'package:ai38ai/repo/user_repo.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class UserRepoImpl implements UserRepo{
-
+class UserRepoImpl implements UserRepo {
   final auth = FirebaseAuth.instance;
   final firestore = FirebaseFirestore.instance;
 
+  //firestore
   @override
   Future<void> addUser(UserModel userModel) {
-    // TODO: implement addUser
-    throw UnimplementedError();
+    return firestore
+        .collection("users")
+        .doc(userModel.id)
+        .set(userModel.toMap());
   }
 
   @override
   Future<void> deleteUser(String id) {
-    // TODO: implement deleteUser
-    throw UnimplementedError();
+    return firestore.collection("users").doc(id).delete();
   }
 
   @override
   Future<void> editProfile(UserModel userModel) {
-    // TODO: implement editProfile
-    throw UnimplementedError();
+    return firestore
+        .collection("users")
+        .doc(userModel.id)
+        .update(userModel.toMap());
   }
 
   @override
   Future<void> forgetPassword(String email) {
-    // TODO: implement forgetPassword
-    throw UnimplementedError();
+    return auth.sendPasswordResetEmail(email: email);
   }
 
   @override
-  Future<List<UserModel>> getAllUser() {
-    // TODO: implement getAllUser
-    throw UnimplementedError();
+  Future<List<UserModel>> getAllUser() async{
+    final users = await firestore
+        .collection("users").get();
+
+    List<UserModel> data = [];
+
+    for(int i =0;i<users.docs.length;i++){
+      data.add(UserModel.fromMap(users.docs[i].data()));
+    }
+
+    return data;
+
   }
 
   @override
-  Future<UserModel> getUserByID(String id) {
-    // TODO: implement getUserByID
-    throw UnimplementedError();
+  Future<UserModel> getUserByID(String id) async {
+    final users = await firestore
+        .collection("users").doc(id).get();
+    final data = users.data();
+
+    if(data == null){
+      throw Exception("unable to fetch data");
+    }
+    return UserModel.fromMap(data);
+
   }
 
   @override
-  Future<String> login(String email, String password) async{
-    final user = await auth.signInWithEmailAndPassword(email: email, password: password);
+  Future<String> login(String email, String password) async {
+    final user = await auth.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
     final userId = user.user?.uid;
 
-    if(userId == null){
+    if (userId == null) {
       throw Exception("Login failed");
     }
     return userId;
@@ -57,14 +78,21 @@ class UserRepoImpl implements UserRepo{
 
   @override
   Future<void> logout() {
-    // TODO: implement logout
-    throw UnimplementedError();
+    return auth.signOut();
   }
 
+  //authentication
   @override
-  Future<String> register(String email, String password) {
-    // TODO: implement register
-    throw UnimplementedError();
-  }
+  Future<String> register(String email, String password) async {
+    final user = await auth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    final userId = user.user?.uid;
 
+    if (userId == null) {
+      throw Exception("Registration failed");
+    }
+    return userId;
+  }
 }
