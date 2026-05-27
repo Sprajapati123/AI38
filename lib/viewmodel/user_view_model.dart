@@ -60,7 +60,19 @@ class UserViewModel extends ChangeNotifier {
 
   Future<void> logout() async {}
 
-  Future<void> forgetPassword(String email) async {}
+  Future<bool> forgetPassword(String email) async {
+    setLoading(true);
+    setError(null);
+    try {
+      await _userRepo.forgetPassword(email);
+      return true;
+    } on Exception catch (e) {
+      setError(e.toString());
+      return false;
+    }finally{
+      setLoading(false);
+    }
+  }
 
   Future<void> addUser(UserModel userModel) async {}
 
