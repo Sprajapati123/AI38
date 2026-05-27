@@ -78,7 +78,19 @@ class UserViewModel extends ChangeNotifier {
 
   Future<void> deleteUser(String id) async {}
 
-  Future<List<UserModel>> getAllUser() async {}
+
+
+  Future<void> getAllUser() async {
+    setLoading(true);
+    setError(null);
+    try {
+      _allUsers = await _userRepo.getAllUser();
+    } on Exception catch (e) {
+      setError(e.toString());
+    }finally{
+      setLoading(false);
+    }
+  }
 
   Future<UserModel> getUserByID(String id) async {}
 
