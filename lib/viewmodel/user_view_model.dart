@@ -1,0 +1,74 @@
+import 'package:ai38ai/model/user_model.dart';
+import 'package:ai38ai/repo/user_repo.dart';
+import 'package:flutter/material.dart';
+
+class UserViewModel extends ChangeNotifier {
+  final UserRepo _userRepo;
+
+  UserViewModel({required UserRepo userRepo}) : _userRepo = userRepo;
+
+  String? _error = "";
+
+  String? get error => _error;
+
+  bool _loading = false;
+
+  bool get loading => _loading;
+
+  UserModel? _user;
+
+  UserModel? get user => _user;
+
+  List<UserModel>? _allUsers;
+
+  List<UserModel>? get allUsers => _allUsers;
+
+  setError(String? error) {
+    _error = error;
+    notifyListeners();
+  }
+
+  setLoading(bool value) {
+    _loading = value;
+    notifyListeners();
+  }
+
+  String? _userId;
+  String? get userId => _userId;
+
+  setUserId(String id){
+    _userId = id;
+    notifyListeners();
+  }
+
+  Future<bool> login(String email, String password) async {
+    setLoading(true);
+    setError(null);
+    try {
+      final uid = await _userRepo.login(email, password);
+      setUserId(uid);
+      return true;
+    } on Exception catch (e) {
+      setError(e.toString());
+      return false;
+    }finally{
+      setLoading(false);
+    }
+  }
+
+  Future<String> register(String email, String password) async {}
+
+  Future<void> logout() async {}
+
+  Future<void> forgetPassword(String email) async {}
+
+  Future<void> addUser(UserModel userModel) async {}
+
+  Future<void> deleteUser(String id) async {}
+
+  Future<List<UserModel>> getAllUser() async {}
+
+  Future<UserModel> getUserByID(String id) async {}
+
+  Future<void> editProfile(UserModel userModel) async {}
+}
