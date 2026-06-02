@@ -34,9 +34,10 @@ class UserViewModel extends ChangeNotifier {
   }
 
   String? _userId;
+
   String? get userId => _userId;
 
-  setUserId(String id){
+  setUserId(String id) {
     _userId = id;
     notifyListeners();
   }
@@ -51,12 +52,24 @@ class UserViewModel extends ChangeNotifier {
     } on Exception catch (e) {
       setError(e.toString());
       return false;
-    }finally{
+    } finally {
       setLoading(false);
     }
   }
 
-  Future<String> register(String email, String password) async {}
+  Future<String> register(String email, String password) async {
+    setLoading(true);
+    setError(null);
+    try {
+      final uid = await _userRepo.login(email, password);
+      return uid;
+    } on Exception catch (e) {
+      setError(e.toString());
+      return "";
+    } finally {
+      setLoading(false);
+    }
+  }
 
   Future<void> logout() async {}
 
@@ -69,16 +82,26 @@ class UserViewModel extends ChangeNotifier {
     } on Exception catch (e) {
       setError(e.toString());
       return false;
-    }finally{
+    } finally {
       setLoading(false);
     }
   }
 
   Future<void> addUser(UserModel userModel) async {}
 
-  Future<void> deleteUser(String id) async {}
-
-
+  Future<bool> deleteUser(String id) async {
+    setLoading(true);
+    setError(null);
+    try {
+      await _userRepo.deleteUser(id);
+      return true;
+    } on Exception catch (e) {
+      setError(e.toString());
+      return false;
+    } finally {
+      setLoading(false);
+    }
+  }
 
   Future<void> getAllUser() async {
     setLoading(true);
@@ -87,12 +110,35 @@ class UserViewModel extends ChangeNotifier {
       _allUsers = await _userRepo.getAllUser();
     } on Exception catch (e) {
       setError(e.toString());
-    }finally{
+    } finally {
       setLoading(false);
     }
   }
 
-  Future<UserModel> getUserByID(String id) async {}
+  Future<void> getUserByID(String id) async {
+    setError(null);
+    setLoading(true);
+    try {
+      final data = await _userRepo.getUserByID(id);
+      _user = data;
+    } on Exception catch (e) {
+      setError(e.toString());
+    } finally {
+      setLoading(false);
+    }
+  }
 
-  Future<void> editProfile(UserModel userModel) async {}
+  Future<bool> editProfile(UserModel userModel) async {
+    setError(null);
+    setLoading(true);
+    try {
+      await _userRepo.editProfile(userModel);
+      return true;
+    } on Exception catch (e) {
+      setError(e.toString());
+      return false;
+    } finally {
+      setLoading(false);
+    }
+  }
 }
