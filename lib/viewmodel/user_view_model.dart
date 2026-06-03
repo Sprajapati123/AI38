@@ -61,7 +61,7 @@ class UserViewModel extends ChangeNotifier {
     setLoading(true);
     setError(null);
     try {
-      final uid = await _userRepo.login(email, password);
+      final uid = await _userRepo.register(email, password);
       return uid;
     } on Exception catch (e) {
       setError(e.toString());
@@ -87,7 +87,19 @@ class UserViewModel extends ChangeNotifier {
     }
   }
 
-  Future<void> addUser(UserModel userModel) async {}
+  Future<bool> addUser(UserModel userModel) async {
+    setLoading(true);
+    setError(null);
+    try {
+      await _userRepo.addUser(userModel);
+      return true;
+    } on Exception catch (e) {
+      setError(e.toString());
+      return false;
+    } finally {
+      setLoading(false);
+    }
+  }
 
   Future<bool> deleteUser(String id) async {
     setLoading(true);

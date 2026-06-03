@@ -1,17 +1,18 @@
+import 'package:ai38ai/repo/user_repo.dart';
+import 'package:ai38ai/repo/user_repo_impl.dart';
 import 'package:ai38ai/view/home_screen.dart';
 import 'package:ai38ai/view/splash_screen.dart';
+import 'package:ai38ai/viewmodel/user_view_model.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'view/dashboard_screen.dart';
 import 'firebase_options.dart';
 
-
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-   await Firebase.initializeApp(
-     options: DefaultFirebaseOptions.currentPlatform,
-   );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(MyHomePage());
 }
@@ -21,10 +22,21 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "AI38",
-      debugShowCheckedModeBanner: false,
-      home: SplashScreen()
+    return MultiProvider(
+      providers: [
+        Provider<UserRepo>(create: (_) => UserRepoImpl()),
+
+        ChangeNotifierProvider(
+          create: (context) =>
+              UserViewModel(userRepo: context.read<UserRepo>()),
+        ),
+
+      ],
+      child: MaterialApp(
+        title: "AI38",
+        debugShowCheckedModeBanner: false,
+        home: SplashScreen(),
+      ),
     );
   }
 }

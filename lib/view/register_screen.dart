@@ -1,4 +1,8 @@
+import 'package:ai38ai/model/user_model.dart';
+import 'package:ai38ai/viewmodel/user_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -18,6 +22,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.watch<UserViewModel>();
     return Scaffold(
       appBar: AppBar(),
       body: Column(
@@ -138,15 +143,41 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 foregroundColor: Colors.white,
               ),
               onPressed: () async {
-                final SharedPreferences prefs =
-                    await SharedPreferences.getInstance();
+                final userId = await viewModel.register(
+                    emailController.text, passwordController.text);
+                if(userId.isEmpty){
+                  Fluttertoast.showToast(msg: viewModel.error.toString());
+                }else{
+                  final model = UserModel(id: userId,
+                      name: nameController.text,
+                      email: passwordController.text);
+                  final success = await viewModel.addUser(model);
+                  if(success){
+                    Fluttertoast.showToast(msg: "Registration success");
+                  }else{
+                   Fluttertoast.showToast(msg: viewModel.error.toString());
+                  }
+                }
 
-                await prefs.setString("name", nameController.text);
-                await prefs.setString("address", addressController.text);
-                await prefs.setString("email", emailController.text);
-                await prefs.setString("password", passwordController.text);
+
+
+
+
+
+
+
+
+
+
+                // final SharedPreferences prefs =
+                //     await SharedPreferences.getInstance();
+                //
+                // await prefs.setString("name", nameController.text);
+                // await prefs.setString("address", addressController.text);
+                // await prefs.setString("email", emailController.text);
+                // await prefs.setString("password", passwordController.text);
               },
-              child: Text("Register"),
+              child: viewModel.loading ? CircularProgressIndicator() : Text("Register"),
             ),
           ),
         ],
