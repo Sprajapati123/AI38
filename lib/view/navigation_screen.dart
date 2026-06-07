@@ -62,7 +62,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
           });
         },
         children: [
-          SearchScreen(),
+          HomeScreen(),
           SearchScreen(),
           CartScreen(),
           OrderScreen(),

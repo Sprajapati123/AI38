@@ -27,26 +27,31 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final vm = context.watch<UserViewModel>();
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {},
+      ),
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ListView.builder(
-                shrinkWrap: true,
-                itemCount: vm.allUsers!.length,
-                itemBuilder: (context, index) {
-                  final data = vm.allUsers![index];
-                  return ListTile(
-                    leading: ,
-                    title: Text(data.name),
-                    subtitle: Column(
-                      children: [
-
-                      ],
-                    ),
-                    trailing: ,
-                  )
-                })
+            vm.allUsers == null
+                ? Text("Item not found")
+                : vm.loading == true
+                ? Center(child: CircularProgressIndicator())
+                : ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: vm.allUsers!.length,
+                    itemBuilder: (context, index) {
+                      final data = vm.allUsers![index];
+                      return ListTile(
+                        leading: Spacer(),
+                        title: Text(data.name),
+                        subtitle: Column(children: []),
+                        trailing: Spacer(),
+                      );
+                    },
+                  ),
             //
             // SizedBox(
             //   height: 120,

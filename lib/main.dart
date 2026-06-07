@@ -1,6 +1,7 @@
 import 'package:ai38ai/repo/user_repo.dart';
 import 'package:ai38ai/repo/user_repo_impl.dart';
 import 'package:ai38ai/view/home_screen.dart';
+import 'package:ai38ai/view/navigation_screen.dart';
 import 'package:ai38ai/view/splash_screen.dart';
 import 'package:ai38ai/viewmodel/user_view_model.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -35,7 +36,7 @@ class MyHomePage extends StatelessWidget {
       child: MaterialApp(
         title: "AI38",
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+        home: NavigationScreen(),
       ),
     );
   }
