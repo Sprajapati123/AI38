@@ -150,7 +150,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 }else{
                   final model = UserModel(id: userId,
                       name: nameController.text,
-                      email: passwordController.text);
+                      email: emailController.text);
                   final success = await viewModel.addUser(model);
                   if(success){
                     Fluttertoast.showToast(msg: "Registration success");
